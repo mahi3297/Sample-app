@@ -3,25 +3,20 @@ pipeline {
 
   environment {
     REGISTRY           = 'index.docker.io'
-    IMAGE_REPO         = 'YOUR_DOCKERHUB_USER/simple-app'
+    IMAGE_REPO         = 'mahender397/simple-app'
     FULL_IMAGE         = "${REGISTRY}/${IMAGE_REPO}"
 
-    MANIFESTS_REPO_URL = 'https://github.com/ORG/simple-manifests.git'
+    MANIFESTS_REPO_URL = 'https://github.com/mahi3297/Manifests-repo.git'
     MANIFESTS_BRANCH   = 'main'
-    DEPLOYMENT_FILE    = 'apps/myapp/prod/deployment.yaml'
+    DEPLOYMENT_FILE    = 'deployment.yaml'
     # Optional: pin to image name string used in the YAML for reliable replacement
-    IMAGE_NAME_IN_YAML = "index.docker.io/YOUR_DOCKERHUB_USER/simple-app"
+    IMAGE_NAME_IN_YAML = "index.docker.io/mahender397/simple-app"
 
-    GIT_USER_NAME      = 'jenkins-bot'
+    GIT_USER_NAME      = ''
     GIT_USER_EMAIL     = 'jenkins-bot@example.com'
 
-    DOCKER_CREDS_ID    = 'docker-registry-creds'
-    GIT_BOT_CREDS_ID   = 'git-bot-creds'
-  }
-
-  triggers {
-    // Use webhook in job settings ideally; fallback polling here
-    pollSCM('H/2 * * * *')
+    DOCKER_CREDS_ID    = 'dockerhub-creds'
+    GIT_BOT_CREDS_ID   = 'GitHub Token'
   }
 
   stages {
